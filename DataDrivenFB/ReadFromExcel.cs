@@ -12,7 +12,7 @@ namespace DataDrivenFB
         [Test]
         public void ReadingDataFromExcelTestMethod()
         {
-            ExcelOperations.PopulateInCollection(@"C:\Users\lavanya.g\Downloads\TestData.xlsx");
+            ExcelOperations.PopulateInCollection(@"C:\Users\lavanya.g\source\repos\DataDrivenFB\DataDrivenFB\CredentialsOfFb.xlsx");
             driver.FindElement(By.Name("email")).SendKeys(ExcelOperations.ReadData(1, "Username"));
             System.Threading.Thread.Sleep(2000);
             driver.FindElement(By.Name("pass")).SendKeys(ExcelOperations.ReadData(1, "Password"));

@@ -27,7 +27,7 @@ namespace DataDrivenFramework
                 }
             });
             DataTableCollection table = resultSet.Tables;
-            DataTable resultTable = table["DataSet"];
+            DataTable resultTable = table["Sheet1"];
             return resultTable;
 
         }
