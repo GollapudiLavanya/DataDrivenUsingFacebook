@@ -1,8 +1,15 @@
-﻿using System;
+﻿/*
+ * project = DataDrivenFrameworkUsingFacebook
+ * Author = Lavanya Gollapudi
+ * Created Date = 14/09/2021
+ */
+
+using System;
 using DataDrivenFramework;
 using System.Diagnostics;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using DataDrivenFB.page;
 
 namespace DataDrivenFB
 {
@@ -10,15 +17,23 @@ namespace DataDrivenFB
     public class ReadFromExcel : Base.BaseClass
     {
         [Test]
-        public void ReadingDataFromExcelTestMethod()
+        public static void ReadingDataFromExcelTestMethodAndLoginToFb()
         {
+            Actions.ActionsDone.AssertAfterLauching(driver);
             ExcelOperations.PopulateInCollection(@"C:\Users\lavanya.g\source\repos\DataDrivenFB\DataDrivenFB\CredentialsOfFb.xlsx");
-            driver.FindElement(By.Name("email")).SendKeys(ExcelOperations.ReadData(1, "Username"));
+
+            Login_page login = new Login_page(driver);
+            login.email.SendKeys(ExcelOperations.ReadData(1, "Username"));
             System.Threading.Thread.Sleep(2000);
-            driver.FindElement(By.Name("pass")).SendKeys(ExcelOperations.ReadData(1, "Password"));
+            
+           
+            login.password.SendKeys(ExcelOperations.ReadData(1, "Password"));
             System.Threading.Thread.Sleep(2000);
-            driver.FindElement(By.Name("login")).Click();
-            System.Threading.Thread.Sleep(8000);
+            
+
+            login.loginButton.Click();
+            System.Threading.Thread.Sleep(15000);
+            
 
         }
     }
